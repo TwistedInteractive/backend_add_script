@@ -8,8 +8,8 @@
 		{
 			return array(
 				'name' => 'Backend add script',
-				'version' => '1.0',
-				'release-date' => '2010-08-05',
+				'version' => '1.1',
+				'release-date' => '2010-08-17',
 				'author' => array(
 					'name' => 'Giel Berkers',
 					'website' => 'http://www.gielberkers.com',
@@ -47,10 +47,13 @@
 			$section= isset($callback['context']['section_handle']) ? '"'.$callback['context']['section_handle'].'"' : 'false';
 			$idEntry= isset($callback['context']['entry_id']) ? '"'.$callback['context']['entry_id'].'"' : 'false';
 			
-			$javaScript.= "var driver   = ".$driver.";\n";
-			$javaScript.= "var action   = ".$action.";\n";
-			$javaScript.= "var section  = ".$section.";\n";
-			$javaScript.= "var id_entry = ".$idEntry.";\n";
+			// User information:
+			$javaScript.= "var user_id   = ".$context['parent']->Author->get('id').";\n";
+			$javaScript.= "var user_type = '".$context['parent']->Author->get('user_type')."';\n";
+			$javaScript.= "var driver    = ".$driver.";\n";
+			$javaScript.= "var action    = ".$action.";\n";
+			$javaScript.= "var section   = ".$section.";\n";
+			$javaScript.= "var id_entry  = ".$idEntry.";\n";
 			
 			$tag = new XMLElement('script', $javaScript, array('type'=>'text/javascript'));
 			$context['parent']->Page->addElementToHead($tag, 50);
