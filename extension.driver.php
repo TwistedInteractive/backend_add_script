@@ -8,8 +8,8 @@
 		{
 			return array(
 				'name' => 'Backend add script',
-				'version' => '1.1',
-				'release-date' => '2010-08-17',
+				'version' => '1.2',
+				'release-date' => '2011-12-15',
 				'author' => array(
 					'name' => 'Giel Berkers',
 					'website' => 'http://www.gielberkers.com',
@@ -39,7 +39,7 @@
 		{
 			// We have to put a lot of javascript here since there are missing some handles:
 			$javaScript = "\n";
-			$callback   = $context['parent']->getPageCallback();
+			$callback   = Administration::instance()->getPageCallback();
 			
 			// Current callback and action:
 			$driver = '"'.$callback['driver'].'"';
@@ -48,17 +48,18 @@
 			$idEntry= isset($callback['context']['entry_id']) ? '"'.$callback['context']['entry_id'].'"' : 'false';
 			
 			// User information:
-			$javaScript.= "var user_id   = ".$context['parent']->Author->get('id').";\n";
-			$javaScript.= "var user_type = '".$context['parent']->Author->get('user_type')."';\n";
+			$javaScript.= "var user_id   = ".Administration::instance()->Author->get('id').";\n";
+			$javaScript.= "var user_type = '".Administration::instance()->Author->get('user_type')."';\n";
 			$javaScript.= "var driver    = ".$driver.";\n";
 			$javaScript.= "var action    = ".$action.";\n";
 			$javaScript.= "var section   = ".$section.";\n";
 			$javaScript.= "var id_entry  = ".$idEntry.";\n";
 			
 			$tag = new XMLElement('script', $javaScript, array('type'=>'text/javascript'));
-			$context['parent']->Page->addElementToHead($tag, 50);
-			$context['parent']->Page->addScriptToHead(URL.'/extensions/backend_add_script/assets/custom.js', 51, false);
-			$context['parent']->Page->addStylesheetToHead(URL.'/extensions/backend_add_script/assets/custom.css', 'screen', 201);
+
+            Administration::instance()->Page->addElementToHead($tag);
+            Administration::instance()->Page->addScriptToHead(URL.'/extensions/backend_add_script/assets/custom.js');
+            Administration::instance()->Page->addStylesheetToHead(URL.'/extensions/backend_add_script/assets/custom.css');
 		}	
 	}
 ?>
