@@ -2,17 +2,13 @@
 <extension id="backend_add_script" xmlns="http://symphony-cms.com/schemas/extension/1.0">
 	<name>Backend Add Script</name>
 	<description>Adds a hook to the backend so you can easily make JavaScript and CSS adjustments on certain pages.</description>
-	<repo type="github">https://github.com/kanduvisla/backend_add_script</repo>
+	<repo type="github">https://github.com/TwistedInteractive/backend_add_script</repo>
     <types>
         <type>Other</type>
         <type>Workflow</type>
     </types>
 	<authors>
-		<author>
-			<name github="kanduvisla" symphony="kanduvisla">Giel Berkers</name>
-            <email>info@gielberkers.com</email>
-            <website>http://www.gielberkers.com</website>
-		</author>
+		
 	</authors>
 	<releases>
 		<release version="1.2" date="2011-12-15" min="2.3"/>
